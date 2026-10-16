@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Darshit & Amisha | Royal Wedding Invitation</title>
+  <meta name="description" content="A royal Indian wedding invitation for Darshit Kacha and Amisha Bavishi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8R2nD0Vd4sN0dX8D0P4S3K8b7P6+fAA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <style>
+    :root {
+      --ivory: #f7f1e7;
+      --ivory-deep: #eee2d0;
+      --burgundy: #5f1127;
+      --crimson: #7d1831;
+      --gold: #d4af37;
+      --gold-soft: #eed38a;
+      --ink: #34211d;
+      --shadow: 0 18px 55px rgba(70, 18, 30, 0.18);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --container: min(1120px, calc(100% - 2rem));
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(212, 175, 55, 0.22), transparent 24%),
+        radial-gradient(circle at top right, rgba(125, 24, 49, 0.12), transparent 26%),
+        linear-gradient(180deg, #fbf7ef 0%, #f6efe1 40%, #fffaf3 100%);
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      width: 280px;
+      height: 280px;
+      pointer-events: none;
+      opacity: 0.3;
+      z-index: 0;
+      background:
+        radial-gradient(circle at center, rgba(212, 175, 55, 0.18), transparent 60%),
+        repeating-conic-gradient(from 0deg, rgba(212, 175, 55, 0.08) 0 12deg, transparent 12deg 24deg);
+      filter: blur(2px);
+    }
+
+    body::before {
+      top: -90px;
+      left: -70px;
+      border-radius: 50%;
+    }
+
+    body::after {
+      right: -90px;
+      bottom: 18%;
+      border-radius: 50%;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+    }
+
+    .petals {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .petal {
+      position: absolute;
+      top: -12%;
+      width: 14px;
+      height: 22px;
+      background: linear-gradient(180deg, #f0cad2 0%, #be5b71 100%);
+      border-radius: 70% 0 70% 0;
+      opacity: 0.7;
+      animation: fall linear infinite;
+      box-shadow: 0 0 10px rgba(190, 91, 113, 0.24);
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(0.9);
+      }
+      100% {
+        transform: translate3d(var(--drift), 120vh, 0) rotate(540deg) scale(1.08);
+      }
+    }
+
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      background: rgba(88, 19, 38, 0.73);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transform: translateY(-100%);
+      transition: transform 0.65s ease;
+    }
+
+    body.invitation-opened .top-nav {
+      transform: translateY(0);
+    }
+
+    .top-nav .inner {
+      width: var(--container);
+      margin: 0 auto;
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-family: "Cinzel", serif;
+      color: #fff6e1;
+      letter-spacing: 0.14em;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: rgba(255, 248, 230, 0.9);
+      font-size: 0.9rem;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: rgba(212, 175, 55, 0.2);
+      color: #fff;
+      outline: none;
+    }
+
+    .audio-toggle {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 35;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #7f1832, #4f0f21);
+      color: #fff5df;
+      box-shadow: 0 14px 30px rgba(81, 11, 30, 0.24);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .audio-toggle:hover,
+    .audio-toggle:focus-visible {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 16px 34px rgba(81, 11, 30, 0.34);
+      outline: none;
+    }
+
+    .landing {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 5.5rem 1rem 2rem;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .landing::before,
+    .landing::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .landing::before {
+      background:
+        linear-gradient(135deg, rgba(95, 17, 39, 0.12), transparent 42%),
+        radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.18), transparent 20%),
+        radial-gradient(circle at 80% 0%, rgba(125, 24, 49, 0.18), transparent 24%);
+    }
+
+    .landing::after {
+      background-image:
+        radial-gradient(circle, rgba(212, 175, 55, 0.28) 1px, transparent 1px),
+        radial-gradient(circle, rgba(125, 24, 49, 0.12) 1px, transparent 1px);
+      background-size: 26px 26px, 48px 48px;
+      background-position: 0 0, 12px 12px;
+      opacity: 0.18;
+    }
+
+    .landing-content {
+      width: min(760px, 100%);
+      position: relative;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 0.8rem;
+      color: var(--crimson);
+      font-family: "Cinzel", serif;
+      letter-spacing: 0.24em;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .landing-title {
+      margin: 0 0 0.8rem;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 6vw, 4.3rem);
+      line-height: 1.08;
+      color: var(--burgundy);
+    }
+
+    .landing-copy {
+      max-width: 42rem;
+      margin: 0 auto 2rem;
+      color: rgba(52, 33, 29, 0.82);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .envelope-scene {
+      perspective: 1800px;
+      width: min(540px, 100%);
+      margin: 0 auto 1.5rem;
+    }
+
+    .envelope-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1.3 / 1;
+      transform-style: preserve-3d;
+    }
+
+    .letter {
+      position: absolute;
+      left: 7%;
+      right: 7%;
+      top: 16%;
+      bottom: 7%;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.96), rgba(249, 242, 227, 0.97)),
+        repeating-linear-gradient(90deg, transparent 0 18px, rgba(212,175,55,0.04) 18px 19px);
+      border-radius: 18px;
+      border: 1px solid rgba(145, 111, 34, 0.22);
+      box-shadow: 0 20px 35px rgba(84, 26, 39, 0.14);
+      padding: 1.2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      transform: translateY(28%) scale(0.94);
+      transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+      z-index: 1;
+    }
+
+    .letter h2 {
+      margin: 0;
+      font-family: "Great Vibes", cursive;
+      color: var(--crimson);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 400;
+    }
+
+    .letter p {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      color: rgba(52, 33, 29, 0.8);
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .envelope-back,
+    .envelope-front,
+    .flap {
+      position: absolute;
+      inset: 0;
+      border-radius: 0 0 26px 26px;
+    }
+
+    .envelope-back {
+      background: linear-gradient(145deg, #f2debe, #e3c598);
+      border: 1px solid rgba(145, 111, 34, 0.28);
+      box-shadow: var(--shadow);
+    }
+
+    .envelope-front {
+      z-index: 3;
+      background:
+        linear-gradient(145deg, #f2ddba, #e6c89d);
+      clip-path: polygon(0 24%, 50% 62%, 100% 24%, 100% 100%, 0 100%);
+      border-left: 1px solid rgba(145, 111, 34, 0.18);
+      border-right: 1px solid rgba(145, 111, 34, 0.18);
+      border-bottom: 1px solid rgba(145, 111, 34, 0.18);
+    }
+
+    .flap {
+      z-index: 4;
+      background:
+        linear-gradient(145deg, #f8e8cb, #e7c99e);
+      clip-path: polygon(0 0, 50% 58%, 100% 0);
+      transform-origin: top center;
+      transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+      border-top-left-radius: 26px;
+      border-top-right-radius: 26px;
+      backface-visibility: hidden;
+      box-shadow: inset 0 0 0 1px rgba(145, 111, 34, 0.16);
+    }
+
+    .wax-seal {
+      position: absolute;
+      left: 50%;
+      top: 45%;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 30%, #b72c4e, #7b1730 65%, #561022 100%);
+      border: 4px solid rgba(255, 241, 209, 0.45);
+      color: #fff0cc;
+      display: grid;
+      place-items: center;
+      font-family: "Cinzel", serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.12em;
+      box-shadow: 0 12px 24px rgba(90, 12, 30, 0.32);
+      transition: transform 0.35s ease, opacity 0.5s ease;
+    }
+
+    .wax-seal:hover,
+    .wax-seal:focus-visible {
+      transform: translate(-50%, -50%) scale(1.05);
+      outline: none;
+    }
+
+    body.invitation-opened .wax-seal {
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, -54%) scale(0.85);
+    }
+
+    body.invitation-opened .flap {
+      transform: rotateX(-176deg);
+    }
+
+    body.invitation-opened .letter {
+      transform: translateY(-18%) scale(1);
+    }
+
+    .btn,
+    .ghost-btn {
+      min-width: 180px;
+      padding: 0.95rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .btn {
+      color: #fff7e7;
+      background: linear-gradient(145deg, #7d1831, #551022);
+      box-shadow: 0 14px 26px rgba(85, 16, 34, 0.22);
+    }
+
+    .btn:hover,
+    .btn:focus-visible,
+    .ghost-btn:hover,
+    .ghost-btn:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .ghost-btn {
+      background: rgba(255, 250, 241, 0.76);
+      color: var(--burgundy);
+      border: 1px solid rgba(125, 24, 49, 0.16);
+      box-shadow: 0 10px 22px rgba(85, 16, 34, 0.08);
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+      opacity: 0.45;
+      transform: translateY(30px);
+      transition: opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s;
+    }
+
+    body.invitation-opened main {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section {
+      width: var(--container);
+      margin: 0 auto;
+      padding: 4rem 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-heading span {
+      display: inline-block;
+      color: var(--crimson);
+      font-family: "Cinzel", serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 0.8rem;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      color: var(--burgundy);
+    }
+
+    .section-heading p {
+      margin: 0 auto;
+      max-width: 42rem;
+      color: rgba(52, 33, 29, 0.72);
+      line-height: 1.8;
+    }
+
+    .hero-card {
+      position: relative;
+      background:
+        linear-gradient(145deg, rgba(255, 250, 241, 0.94), rgba(247, 239, 227, 0.92));
+      border-radius: 36px;
+      padding: 4rem 1.3rem 2.4rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.18);
+    }
+
+    .hero-card::before,
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 28px;
+      border: 1px solid rgba(212, 175, 55, 0.22);
+      pointer-events: none;
+    }
+
+    .hero-card::after {
+      inset: auto 0 0 auto;
+      width: 220px;
+      height: 220px;
+      border: 0;
+      background:
+        radial-gradient(circle at center, rgba(212, 175, 55, 0.18), transparent 64%),
+        radial-gradient(circle at center, rgba(125, 24, 49, 0.12) 0 38%, transparent 40% 100%);
+      opacity: 0.6;
+      transform: translate(18%, 22%);
+    }
+
+    .mandala {
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      opacity: 0.12;
+      border-radius: 50%;
+      background:
+        repeating-conic-gradient(from 0deg, var(--gold) 0 12deg, transparent 12deg 24deg),
+        radial-gradient(circle, transparent 0 26%, rgba(212, 175, 55, 0.2) 26% 28%, transparent 28% 100%);
+    }
+
+    .mandala.top-left {
+      top: -30px;
+      left: -30px;
+    }
+
+    .mandala.bottom-right {
+      bottom: -30px;
+      right: -30px;
+    }
+
+    .hero-inner {
+      position: relative;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      background: rgba(125, 24, 49, 0.08);
+      color: var(--crimson);
+      font-family: "Cinzel", serif;
+      letter-spacing: 0.16em;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+    }
+
+    .couple-names {
+      margin: 1.25rem 0 0.3rem;
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(3rem, 8vw, 6.3rem);
+      color: var(--burgundy);
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .hero-subtitle {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1rem, 2.8vw, 1.35rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(52, 33, 29, 0.76);
+    }
+
+    .hero-blessings {
+      max-width: 42rem;
+      margin: 1.25rem auto 1.8rem;
+      line-height: 1.9;
+      color: rgba(52, 33, 29, 0.78);
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1.8rem;
+    }
+
+    .count-card {
+      background: rgba(255, 255, 255, 0.64);
+      border: 1px solid rgba(212, 175, 55, 0.18);
+      border-radius: 20px;
+      padding: 1rem 0.8rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    .count-card strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      color: var(--burgundy);
+      font-size: clamp(1.8rem, 5vw, 2.4rem);
+    }
+
+    .count-card span {
+      display: block;
+      margin-top: 0.25rem;
+      color: rgba(52, 33, 29, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.72rem;
+    }
+
+    .scratch-layout,
+    .story-layout,
+    .venue-grid,
+    .rsvp-grid {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .card {
+      background: rgba(255, 251, 245, 0.88);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(212, 175, 55, 0.16);
+      box-shadow: var(--shadow);
+    }
+
+    .scratch-card {
+      padding: 1.2rem;
+      overflow: hidden;
+    }
+
+    .scratch-reveal {
+      position: relative;
+      min-height: 300px;
+      border-radius: 22px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(212, 175, 55, 0.18), transparent 32%),
+        linear-gradient(180deg, #fffef9 0%, #f7edda 100%);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+    }
+
+    #scratchCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+      cursor: crosshair;
+    }
+
+    .scratch-hidden {
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .scratch-hidden h3 {
+      margin: 0 0 0.6rem;
+      font-family: "Playfair Display", serif;
+      color: var(--burgundy);
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
+    }
+
+    .date-script {
+      display: block;
+      font-family: "Great Vibes", cursive;
+      color: var(--crimson);
+      font-size: clamp(2.4rem, 7vw, 4rem);
+      margin: 0.25rem 0 0.5rem;
+      line-height: 1.1;
+    }
+
+    .note-box {
+      margin-top: 1rem;
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      background: rgba(125, 24, 49, 0.06);
+      line-height: 1.8;
+      color: rgba(52, 33, 29, 0.76);
+    }
+
+    .scratch-meta {
+      padding: 1rem 0.2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .scratch-progress {
+      color: rgba(52, 33, 29, 0.7);
+      font-size: 0.95rem;
+    }
+
+    .story-copy,
+    .venue-card,
+    .rsvp-card,
+    .timeline-card {
+      padding: 1.5rem;
+    }
+
+    .story-copy p,
+    .venue-card p,
+    .rsvp-card p,
+    .timeline-card p {
+      line-height: 1.85;
+      color: rgba(52, 33, 29, 0.74);
+    }
+
+    .story-copy .signature {
+      margin-top: 1.2rem;
+      font-family: "Great Vibes", cursive;
+      font-size: 2rem;
+      color: var(--crimson);
+    }
+
+    .slider {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      min-height: 360px;
+      box-shadow: var(--shadow);
+      background: #e7ddd0;
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform 0.55s ease;
+      height: 100%;
+    }
+
+    .story-slide {
+      min-width: 100%;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .story-slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(39, 16, 20, 0.55));
+      z-index: 1;
+    }
+
+    .story-slide img {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+    }
+
+    .slide-caption {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 2;
+      color: #fff5e4;
+    }
+
+    .slide-caption h3 {
+      margin: 0 0 0.35rem;
+      font-family: "Playfair Display", serif;
+      font-size: 1.4rem;
+    }
+
+    .slide-caption p {
+      margin: 0;
+      max-width: 32rem;
+      color: rgba(255, 245, 228, 0.88);
+    }
+
+    .slider-controls,
+    .timeline-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      padding: 0.8rem 1rem;
+      border-radius: 999px;
+      background: rgba(125, 24, 49, 0.08);
+      color: var(--burgundy);
+      font-weight: 600;
+      min-width: 124px;
+    }
+
+    .dots,
+    .timeline-dots {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .dot,
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(125, 24, 49, 0.2);
+      border: 1px solid rgba(125, 24, 49, 0.18);
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .dot.active,
+    .timeline-dot.active {
+      background: linear-gradient(145deg, #d4af37, #b98b17);
+      transform: scale(1.15);
+    }
+
+    .timeline-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+    }
+
+    .timeline-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 7px;
+      background: linear-gradient(180deg, #d4af37, #7d1831);
+    }
+
+    .timeline-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, rgba(212, 175, 55, 0.22), rgba(125, 24, 49, 0.12));
+      color: var(--burgundy);
+      font-size: 1.65rem;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-card h3 {
+      margin: 0 0 0.5rem;
+      font-family: "Playfair Display", serif;
+      color: var(--burgundy);
+      font-size: 1.7rem;
+    }
+
+    .timeline-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin: 1.2rem 0;
+    }
+
+    .meta-pill {
+      padding: 0.9rem 1rem;
+      border-radius: 18px;
+      background: rgba(125, 24, 49, 0.05);
+      border: 1px solid rgba(125, 24, 49, 0.08);
+    }
+
+    .meta-pill span {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      color: rgba(52, 33, 29, 0.58);
+      margin-bottom: 0.3rem;
+    }
+
+    .meta-pill strong {
+      color: var(--burgundy);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .venue-card h3,
+    .rsvp-card h3 {
+      margin: 0 0 0.75rem;
+      font-family: "Playfair Display", serif;
+      color: var(--burgundy);
+      font-size: 1.7rem;
+    }
+
+    .venue-list {
+      display: grid;
+      gap: 0.85rem;
+      margin: 1.2rem 0 1.5rem;
+    }
+
+    .venue-item {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      color: rgba(52, 33, 29, 0.8);
+    }
+
+    .venue-item i {
+      color: var(--gold);
+      margin-top: 0.18rem;
+    }
+
+    .map-frame {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      min-height: 340px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(212, 175, 55, 0.16);
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      min-height: 340px;
+      border: 0;
+      display: block;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .rsvp-single {
+      grid-template-columns: 1fr !important;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .field label {
+      color: var(--burgundy);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(125, 24, 49, 0.14);
+      background: rgba(255, 255, 255, 0.82);
+      padding: 0.95rem 1rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: rgba(212, 175, 55, 0.72);
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.14);
+    }
+
+    .field textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .status-note {
+      margin-top: 1rem;
+      padding: 0.9rem 1rem;
+      border-radius: 16px;
+      background: rgba(212, 175, 55, 0.1);
+      color: rgba(52, 33, 29, 0.76);
+      display: none;
+    }
+
+    .status-note.show {
+      display: block;
+    }
+
+    footer {
+      padding: 2rem 1rem 3.5rem;
+      text-align: center;
+      color: rgba(52, 33, 29, 0.62);
+      font-size: 0.95rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (min-width: 768px) {
+      .landing {
+        padding-top: 7rem;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .scratch-layout,
+      .story-layout,
+      .venue-grid,
+      .rsvp-grid {
+        grid-template-columns: 1.05fr 1fr;
+        align-items: stretch;
+      }
+
+      .rsvp-grid {
+        grid-template-columns: 0.92fr 1.08fr;
+      }
+
+      .story-layout .slider {
+        min-height: 100%;
+      }
+
+      .slider-controls,
+      .timeline-controls {
+        flex-wrap: nowrap;
+      }
+    }
+
+    @media (min-width: 980px) {
+      .hero-card {
+        padding: 4.5rem 3rem 3rem;
+      }
+
+      .scratch-card,
+      .story-copy,
+      .venue-card,
+      .rsvp-card,
+      .timeline-card {
+        padding: 2rem;
+      }
+
+      section {
+        padding: 5rem 0;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .top-nav .inner {
+        padding: 0.7rem 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .timeline-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .slider-controls,
+      .timeline-controls {
+        justify-content: center;
+      }
+
+      .btn-row {
+        flex-direction: column;
+      }
+
+      .btn-row .btn,
+      .btn-row .ghost-btn {
+        width: min(100%, 320px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="petals" aria-hidden="true" id="petals"></div>
+
+  <nav class="top-nav" aria-label="Wedding sections">
+    <div class="inner">
+      <div class="brand">Darshit & Amisha</div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#events">Events</a>
+        <a href="#story">Story</a>
+        <a href="#venue">Venue</a>
+        <a href="#rsvp">RSVP</a>
+      </div>
+    </div>
+  </nav>
+
+  <button class="audio-toggle" id="audioToggle" type="button" aria-label="Toggle background music" title="Toggle music">
+    <i class="fa-solid fa-volume-xmark"></i>
+  </button>
+
+  <header class="landing" id="landing">
+    <div class="landing-content">
+      <span class="eyebrow">Royal Indian Wedding Invitation</span>
+      <h1 class="landing-title">A celebration of love, legacy, and forever.</h1>
+      <p class="landing-copy">
+        With grace in our hearts and blessings from our families, we invite you to witness the sacred union of Darshit Kacha and Amisha Bavishi in an evening wrapped in ivory elegance, burgundy splendor, and golden warmth.
+      </p>
+
+      <div class="envelope-scene" aria-label="Interactive invitation envelope">
+        <div class="envelope-wrap" id="envelopeWrap">
+          <div class="envelope-back"></div>
+          <div class="letter">
+            <p>The Wedding Of</p>
+            <h2>Darshit & Amisha</h2>
+            <p>Open to reveal the celebration</p>
+          </div>
+          <div class="flap"></div>
+          <div class="envelope-front"></div>
+          <button class="wax-seal" id="sealButton" type="button" aria-label="Open invitation">D &amp; A</button>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <section id="home">
+      <div class="hero-card card">
+        <div class="mandala top-left"></div>
+        <div class="mandala bottom-right"></div>
+        <div class="hero-inner">
+          <div class="hero-kicker"><i class="fa-solid fa-ring"></i> Save the celebration</div>
+          <h2 class="couple-names">Darshit &amp; Amisha</h2>
+          <p class="hero-subtitle">Sunday, 14 February 2027 | Wedding Muhurat at 6:42 PM</p>
+          <p class="hero-blessings">
+            Join us as two families become one in a royal celebration of rituals, music, joy, and heartfelt blessings. Your presence will make our most cherished moment glow even brighter.
+          </p>
+
+          <div class="countdown" aria-label="Countdown to wedding">
+            <div class="count-card"><strong id="days">00</strong><span>Days</span></div>
+            <div class="count-card"><strong id="hours">00</strong><span>Hours</span></div>
+            <div class="count-card"><strong id="minutes">00</strong><span>Minutes</span></div>
+            <div class="count-card"><strong id="seconds">00</strong><span>Seconds</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="save-date">
+      <div class="section-heading">
+        <span>Reveal The Date</span>
+        <h2>Scratch away the golden veil</h2>
+        <p>Gently uncover the auspicious date and our personal note, just as one would unveil a treasured invitation.</p>
+      </div>
+
+      <div class="scratch-layout">
+        <div class="card scratch-card">
+          <div class="scratch-reveal">
+            <div class="scratch-hidden">
+              <h3>Save The Date</h3>
+              <span class="date-script">14 February 2027</span>
+              <p><strong>Wedding Muhurat:</strong> 6:42 PM onward</p>
+              <div class="note-box">
+                From the first smile to this forever promise, every memory has led us here. We cannot wait to celebrate love, laughter, and blessings with you beside us.
+              </div>
+            </div>
+            <canvas id="scratchCanvas" aria-label="Scratch card to reveal date"></canvas>
+          </div>
+          <div class="scratch-meta">
+            <div class="scratch-progress" id="scratchProgress">Scratch the card to reveal our special date.</div>
+            <button class="ghost-btn" id="revealButton" type="button">Clear All / Reveal Now</button>
+          </div>
+        </div>
+
+        <div class="card story-copy">
+          <h3>Elegant moments begin with anticipation</h3>
+          <p>
+            This invitation blends timeless Indian grandeur with modern romance. Ivory textures, rich burgundy details, and warm gold accents create a keepsake-inspired experience worthy of a royal celebration.
+          </p>
+          <p>
+            Uncover the date, hear the soft melody, and step into a page designed to feel ceremonial, intimate, and joyful from the very first interaction.
+          </p>
+          <div class="signature">With love, Darshit &amp; Amisha</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="section-heading">
+        <span>Our Story</span>
+        <h2>A journey written in grace and joy</h2>
+        <p>Moments of laughter, long conversations, and a love that found home in each other now lead us to this beautiful beginning.</p>
+      </div>
+
+      <div class="story-layout">
+        <div class="card story-copy">
+          <h3>From a gentle spark to a lifelong promise</h3>
+          <p>
+            What began with shared smiles and heartfelt conversations blossomed into a bond filled with warmth, trust, and unwavering companionship. Our story is woven with family blessings, festive colors, and dreams of building a beautiful life together.
+          </p>
+          <p>
+            Every cherished memory has become a thread in our celebration, and now we are delighted to gather everyone we love for rituals, music, dancing, and sacred vows.
+          </p>
+          <p>
+            Swipe through a few visual moments that capture the romance, grandeur, and glow of the wedding week we are about to celebrate.
+          </p>
+        </div>
+
+        <div>
+          <div class="slider card" id="storySlider">
+            <div class="slider-track" id="sliderTrack">
+              <article class="story-slide">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=80" alt="Couple walking together in elegant attire">
+                <div class="slide-caption">
+                  <h3>Beginnings</h3>
+                  <p>A quiet moment that turned into a lifelong promise.</p>
+                </div>
+              </article>
+              <article class="story-slide">
+                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1400&q=80" alt="Romantic couple portrait outdoors">
+                <div class="slide-caption">
+                  <h3>Shared Joy</h3>
+                  <p>Filled with laughter, tenderness, and the warmth of companionship.</p>
+                </div>
+              </article>
+              <article class="story-slide">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1400&q=80" alt="Wedding celebration details with flowers and decor">
+                <div class="slide-caption">
+                  <h3>Celebration</h3>
+                  <p>A wedding week adorned with florals, music, and glowing rituals.</p>
+                </div>
+              </article>
+              <article class="story-slide">
+                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=1400&q=80" alt="Couple embracing during golden hour">
+                <div class="slide-caption">
+                  <h3>Forever</h3>
+                  <p>Golden-hour promises for a future built on love and trust.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="slider-controls">
+            <button class="nav-btn" id="prevSlide" type="button"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+            <div class="dots" id="sliderDots" aria-label="Gallery slide indicators"></div>
+            <button class="nav-btn" id="nextSlide" type="button">Next <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="events">
+      <div class="section-heading">
+        <span>Wedding Itinerary</span>
+        <h2>Traditional celebrations, one unforgettable week</h2>
+        <p>Move through each ceremony to explore the schedule, attire, and spirit of the festivities leading up to the wedding and reception.</p>
+      </div>
+
+      <div class="card timeline-card">
+        <div class="timeline-icon" id="timelineIcon"><i class="fa-solid fa-om"></i></div>
+        <h3 id="eventTitle">Ganesh Sthapana &amp; Mandap Muhurat</h3>
+        <p id="eventDescription">An auspicious beginning invoking blessings, joy, and divine grace for the celebrations ahead.</p>
+        <div class="timeline-meta">
+          <div class="meta-pill"><span>Date</span><strong id="eventDate">10 February 2027</strong></div>
+          <div class="meta-pill"><span>Time</span><strong id="eventTime">9:00 AM onwards</strong></div>
+          <div class="meta-pill"><span>Dress Code</span><strong id="eventAttire">Traditional ivory with gold accents</strong></div>
+          <div class="meta-pill"><span>Vibe</span><strong id="eventVibe">Sacred, graceful, intimate</strong></div>
+        </div>
+      </div>
+      <div class="timeline-controls">
+        <button class="nav-btn" id="prevEvent" type="button"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+        <div class="timeline-dots" id="timelineDots" aria-label="Event progress indicators"></div>
+        <button class="nav-btn" id="nextEvent" type="button">Next <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </section>
+
+    <section id="venue">
+      <div class="section-heading">
+        <span>Venue &amp; Directions</span>
+        <h2>Where the celebration unfolds</h2>
+        <p>Join us at a regal setting by the lake, chosen for its serene beauty, royal architecture, and luminous hospitality.</p>
+      </div>
+
+      <div class="venue-grid">
+        <div class="card venue-card">
+          <h3>The Leela Palace Udaipur</h3>
+          <p>Set against the shimmering waters of Lake Pichola, our venue invites you into a celebration framed by heritage charm, candlelit opulence, and timeless romance.</p>
+          <div class="venue-list">
+            <div class="venue-item"><i class="fa-solid fa-location-dot"></i><span>Lake Pichola, P. O. Box 125, Udaipur, Rajasthan 313001, India</span></div>
+            <div class="venue-item"><i class="fa-solid fa-calendar-days"></i><span>Main Wedding Ceremony: Sunday, 14 February 2027</span></div>
+            <div class="venue-item"><i class="fa-solid fa-clock"></i><span>Guest arrival recommended by 5:30 PM</span></div>
+          </div>
+          <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=The+Leela+Palace+Udaipur" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+        </div>
+
+        <div class="map-frame">
+          <iframe title="Wedding venue map" loading="lazy" allowfullscreen src="https://www.google.com/maps?q=The+Leela+Palace+Udaipur&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp">
+      <div class="section-heading">
+        <span>RSVP</span>
+        <p>We would be honored to celebrate with you. Share your RSVP and warm wishes, and we will prepare for your arrival with joy.</p>
+      </div>
+
+      <div class="rsvp-grid rsvp-single">
+        <div class="card rsvp-card">
+          <h3>Celebrate with us</h3>
+          <p>
+            Kindly respond at your earliest convenience so we can arrange every detail thoughtfully. Your presence, prayers, and joyful spirit will mean the world to us.
+          </p>
+          <p>
+            For confirmations and guest coordination, please reach out directly on WhatsApp.
+          </p>
+          <div class="note-box">
+            <strong>WhatsApp RSVP Contact:</strong><br>
+            Wedding Host Desk - +91 98765 43210
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Crafted with love for the wedding celebration of Darshit Kacha and Amisha Bavishi.<br>
+    We look forward to celebrating this royal beginning with you.
+  </footer>
+
+  <script>
+    const weddingDate = new Date("2027-02-14T18:42:00+05:30");
+    const body = document.body;
+    const sealButton = document.getElementById("sealButton");
+    const audioToggle = document.getElementById("audioToggle");
+    const heroSection = document.getElementById("home");
+    const scratchCanvas = document.getElementById("scratchCanvas");
+    const revealButton = document.getElementById("revealButton");
+    const scratchProgress = document.getElementById("scratchProgress");
+    const petalsContainer = document.getElementById("petals");
+    const sliderTrack = document.getElementById("sliderTrack");
+    const slides = Array.from(document.querySelectorAll(".story-slide"));
+    const sliderDots = document.getElementById("sliderDots");
+    const prevSlide = document.getElementById("prevSlide");
+    const nextSlide = document.getElementById("nextSlide");
+    const prevEvent = document.getElementById("prevEvent");
+    const nextEvent = document.getElementById("nextEvent");
+    const timelineDots = document.getElementById("timelineDots");
+
+    const countdownIds = ["days", "hours", "minutes", "seconds"];
+
+    const events = [
+      {
+        title: "Ganesh Sthapana & Mandap Muhurat",
+        description: "An auspicious beginning invoking blessings, joy, and divine grace for the celebrations ahead.",
+        date: "10 February 2027",
+        time: "9:00 AM onwards",
+        attire: "Traditional ivory with gold accents",
+        vibe: "Sacred, graceful, intimate",
+        icon: "fa-om"
+      },
+      {
+        title: "Haldi & Mehendi Rasam",
+        description: "Turmeric hues, henna artistry, and laughter-filled rituals bring families together in color and affection.",
+        date: "11 February 2027",
+        time: "11:00 AM onwards",
+        attire: "Sunlit yellow, pista, floral chic",
+        vibe: "Playful, vibrant, heartfelt",
+        icon: "fa-hand-sparkles"
+      },
+      {
+        title: "Sangeet & Garba Night",
+        description: "An evening of rhythm, glittering performances, and energetic garba under a sky of lights and celebration.",
+        date: "12 February 2027",
+        time: "7:30 PM onwards",
+        attire: "Festive jewel tones and mirror work",
+        vibe: "Musical, glamorous, joyous",
+        icon: "fa-music"
+      },
+      {
+        title: "Hastamelap / Wedding Ceremony",
+        description: "The sacred vows, blessings, and the union of two hearts in a ceremony rooted in tradition and love.",
+        date: "14 February 2027",
+        time: "6:42 PM muhurat",
+        attire: "Royal Indian formalwear",
+        vibe: "Grand, emotional, timeless",
+        icon: "fa-ring"
+      },
+      {
+        title: "Grand Reception",
+        description: "A refined evening of fine dining, warm toasts, elegant decor, and unforgettable celebration with loved ones.",
+        date: "15 February 2027",
+        time: "8:00 PM onwards",
+        attire: "Black tie or opulent ethnic evening wear",
+        vibe: "Luxurious, celebratory, sparkling",
+        icon: "fa-champagne-glasses"
+      }
+    ];
+
+    let invitationOpened = false;
+    let audioContext;
+    let audioMasterGain;
+    let musicTimer;
+    let musicEnabled = false;
+    let currentSlide = 0;
+    let currentEvent = 0;
+
+    function createPetals() {
+      const petalCount = 18;
+      for (let index = 0; index < petalCount; index += 1) {
+        const petal = document.createElement("span");
+        petal.className = "petal";
+        petal.style.left = `${Math.random() * 100}%`;
+        petal.style.animationDuration = `${12 + Math.random() * 12}s`;
+        petal.style.animationDelay = `${Math.random() * -20}s`;
+        petal.style.opacity = `${0.35 + Math.random() * 0.45}`;
+        petal.style.setProperty("--drift", `${-90 + Math.random() * 180}px`);
+        petal.style.transform = `scale(${0.7 + Math.random() * 0.7})`;
+        petalsContainer.appendChild(petal);
+      }
+    }
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = weddingDate - now;
+      const values = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+
+      if (diff > 0) {
+        values.days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        values.hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        values.minutes = Math.floor((diff / (1000 * 60)) % 60);
+        values.seconds = Math.floor((diff / 1000) % 60);
+      }
+
+      countdownIds.forEach((id) => {
+        document.getElementById(id).textContent = String(values[id]).padStart(2, "0");
+      });
+    }
+
+    function ensureAudio() {
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        audioMasterGain = audioContext.createGain();
+        audioMasterGain.gain.value = 0.03;
+        audioMasterGain.connect(audioContext.destination);
+      }
+    }
+
+    function playNote(frequency, duration, type, volume, startAt) {
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+
+      oscillator.type = type;
+      oscillator.frequency.setValueAtTime(frequency, startAt);
+      gainNode.gain.setValueAtTime(0.0001, startAt);
+      gainNode.gain.exponentialRampToValueAtTime(volume, startAt + 0.08);
+      gainNode.gain.exponentialRampToValueAtTime(0.0001, startAt + duration);
+
+      oscillator.connect(gainNode);
+      gainNode.connect(audioMasterGain);
+      oscillator.start(startAt);
+      oscillator.stop(startAt + duration + 0.06);
+    }
+
+    function scheduleMusic() {
+      if (!musicEnabled || !audioContext) {
+        return;
+      }
+
+      const base = audioContext.currentTime + 0.05;
+      const padNotes = [261.63, 329.63, 392.0, 523.25];
+      const melody = [659.25, 523.25, 587.33, 493.88, 523.25, 392.0];
+
+      padNotes.forEach((note, index) => {
+        playNote(note, 2.8, "sine", 0.32, base + index * 0.7);
+      });
+
+      melody.forEach((note, index) => {
+        playNote(note, 0.45, "triangle", 0.2, base + 0.35 + index * 0.45);
+      });
+    }
+
+    async function startMusic() {
+      ensureAudio();
+      if (audioContext.state === "suspended") {
+        await audioContext.resume();
+      }
+
+      if (musicEnabled) {
+        return;
+      }
+
+      musicEnabled = true;
+      audioToggle.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+      scheduleMusic();
+      musicTimer = window.setInterval(scheduleMusic, 3200);
+    }
+
+    function stopMusic() {
+      musicEnabled = false;
+      audioToggle.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+      if (musicTimer) {
+        window.clearInterval(musicTimer);
+        musicTimer = null;
+      }
+    }
+
+    async function toggleMusic() {
+      if (musicEnabled) {
+        stopMusic();
+      } else {
+        await startMusic();
+      }
+    }
+
+    async function openInvitation() {
+      if (invitationOpened) {
+        heroSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
+      invitationOpened = true;
+      body.classList.add("invitation-opened");
+      await startMusic();
+      window.setTimeout(() => {
+        heroSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 1100);
+    }
+
+    function celebrate(originY = 0.6) {
+      if (typeof confetti !== "function") {
+        return;
+      }
+
+      confetti({
+        particleCount: 90,
+        spread: 70,
+        origin: { y: originY },
+        colors: ["#d4af37", "#7d1831", "#f7f1e7", "#c65b74"]
+      });
+    }
+
+    function initializeScratchCard() {
+      const context = scratchCanvas.getContext("2d");
+      let isDrawing = false;
+      let scratchComplete = false;
+
+      function resizeCanvas() {
+        const rect = scratchCanvas.getBoundingClientRect();
+        const ratio = window.devicePixelRatio || 1;
+        scratchCanvas.width = rect.width * ratio;
+        scratchCanvas.height = rect.height * ratio;
+        context.setTransform(1, 0, 0, 1, 0, 0);
+        context.scale(ratio, ratio);
+        drawCover(rect.width, rect.height);
+      }
+
+      function drawCover(width, height) {
+        context.globalCompositeOperation = "source-over";
+        const gradient = context.createLinearGradient(0, 0, width, height);
+        gradient.addColorStop(0, "#f7dfa2");
+        gradient.addColorStop(0.5, "#d4af37");
+        gradient.addColorStop(1, "#b68516");
+        context.fillStyle = gradient;
+        context.fillRect(0, 0, width, height);
+
+        context.fillStyle = "rgba(255, 255, 255, 0.18)";
+        for (let i = 0; i < 40; i += 1) {
+          context.beginPath();
+          context.arc(Math.random() * width, Math.random() * height, Math.random() * 3 + 1, 0, Math.PI * 2);
+          context.fill();
+        }
+
+        context.strokeStyle = "rgba(255,255,255,0.24)";
+        context.lineWidth = 1;
+        for (let line = -height; line < width; line += 16) {
+          context.beginPath();
+          context.moveTo(line, 0);
+          context.lineTo(line + height, height);
+          context.stroke();
+        }
+
+        context.fillStyle = "rgba(93, 40, 6, 0.28)";
+        context.font = "600 24px Poppins";
+        context.textAlign = "center";
+        context.fillText("Scratch to Reveal", width / 2, height / 2);
+      }
+
+      function getPosition(event) {
+        const rect = scratchCanvas.getBoundingClientRect();
+        const point = event.touches ? event.touches[0] : event;
+        return {
+          x: point.clientX - rect.left,
+          y: point.clientY - rect.top
+        };
+      }
+
+      function scratch(x, y) {
+        context.globalCompositeOperation = "destination-out";
+        context.beginPath();
+        context.arc(x, y, 22, 0, Math.PI * 2);
+        context.fill();
+      }
+
+      function calculateCleared() {
+        const { width, height } = scratchCanvas;
+        const imageData = context.getImageData(0, 0, width, height).data;
+        let transparentPixels = 0;
+        for (let i = 3; i < imageData.length; i += 4) {
+          if (imageData[i] === 0) {
+            transparentPixels += 1;
+          }
+        }
+        const percent = Math.round((transparentPixels / (width * height)) * 100);
+        scratchProgress.textContent = `Revealed ${percent}% of the card.`;
+        if (!scratchComplete && percent >= 45) {
+          scratchComplete = true;
+          scratchProgress.textContent = "The date is revealed. We cannot wait to celebrate with you!";
+          celebrate(0.45);
+        }
+      }
+
+      function pointerDown(event) {
+        isDrawing = true;
+        const position = getPosition(event);
+        scratch(position.x, position.y);
+      }
+
+      function pointerMove(event) {
+        if (!isDrawing) {
+          return;
+        }
+        event.preventDefault();
+        const position = getPosition(event);
+        scratch(position.x, position.y);
+      }
+
+      function pointerUp() {
+        if (!isDrawing) {
+          return;
+        }
+        isDrawing = false;
+        calculateCleared();
+      }
+
+      revealButton.addEventListener("click", () => {
+        context.clearRect(0, 0, scratchCanvas.width, scratchCanvas.height);
+        scratchComplete = true;
+        scratchProgress.textContent = "Fully revealed. Your royal invite awaits below.";
+        celebrate(0.45);
+      });
+
+      scratchCanvas.addEventListener("mousedown", pointerDown);
+      scratchCanvas.addEventListener("mousemove", pointerMove);
+      window.addEventListener("mouseup", pointerUp);
+      scratchCanvas.addEventListener("touchstart", pointerDown, { passive: true });
+      scratchCanvas.addEventListener("touchmove", pointerMove, { passive: false });
+      window.addEventListener("touchend", pointerUp);
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
+    }
+
+    function renderSliderDots() {
+      sliderDots.innerHTML = "";
+      slides.forEach((_, index) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = `dot${index === currentSlide ? " active" : ""}`;
+        dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
+        dot.addEventListener("click", () => goToSlide(index));
+        sliderDots.appendChild(dot);
+      });
+    }
+
+    function goToSlide(index) {
+      currentSlide = (index + slides.length) % slides.length;
+      sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+      [...sliderDots.children].forEach((dot, dotIndex) => {
+        dot.classList.toggle("active", dotIndex === currentSlide);
+      });
+    }
+
+    function initializeSlider() {
+      renderSliderDots();
+      prevSlide.addEventListener("click", () => goToSlide(currentSlide - 1));
+      nextSlide.addEventListener("click", () => goToSlide(currentSlide + 1));
+
+      const slider = document.getElementById("storySlider");
+      let startX = 0;
+
+      slider.addEventListener("touchstart", (event) => {
+        startX = event.changedTouches[0].clientX;
+      }, { passive: true });
+
+      slider.addEventListener("touchend", (event) => {
+        const endX = event.changedTouches[0].clientX;
+        const diff = endX - startX;
+        if (Math.abs(diff) > 40) {
+          if (diff < 0) {
+            goToSlide(currentSlide + 1);
+          } else {
+            goToSlide(currentSlide - 1);
+          }
+        }
+      });
+    }
+
+    function renderEventDots() {
+      timelineDots.innerHTML = "";
+      events.forEach((eventItem, index) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = `timeline-dot${index === currentEvent ? " active" : ""}`;
+        dot.setAttribute("aria-label", eventItem.title);
+        dot.addEventListener("click", () => showEvent(index));
+        timelineDots.appendChild(dot);
+      });
+    }
+
+    function showEvent(index) {
+      currentEvent = (index + events.length) % events.length;
+      const eventItem = events[currentEvent];
+      document.getElementById("timelineIcon").innerHTML = `<i class="fa-solid ${eventItem.icon}"></i>`;
+      document.getElementById("eventTitle").textContent = eventItem.title;
+      document.getElementById("eventDescription").textContent = eventItem.description;
+      document.getElementById("eventDate").textContent = eventItem.date;
+      document.getElementById("eventTime").textContent = eventItem.time;
+      document.getElementById("eventAttire").textContent = eventItem.attire;
+      document.getElementById("eventVibe").textContent = eventItem.vibe;
+      [...timelineDots.children].forEach((dot, dotIndex) => {
+        dot.classList.toggle("active", dotIndex === currentEvent);
+      });
+    }
+
+    function initializeTimeline() {
+      renderEventDots();
+      showEvent(0);
+      prevEvent.addEventListener("click", () => showEvent(currentEvent - 1));
+      nextEvent.addEventListener("click", () => showEvent(currentEvent + 1));
+    }
+
+    sealButton.addEventListener("click", openInvitation);
+    audioToggle.addEventListener("click", toggleMusic);
+
+    updateCountdown();
+    window.setInterval(updateCountdown, 1000);
+    createPetals();
+    initializeScratchCard();
+    initializeSlider();
+    initializeTimeline();
+  </script>
+</body>
+</html>
